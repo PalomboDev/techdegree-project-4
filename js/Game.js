@@ -2,9 +2,9 @@
  * Project 4 - OOP Game App
  * Game.js */
 
- const overlay = document.querySelector('#overlay');
- const qwertyKeys = document.querySelectorAll('#qwerty div button');
- const heartsLIs = document.querySelectorAll('#scoreboard ol li');
+ const overlay = doc.querySelector('#overlay');
+ const qwertyKeys = doc.querySelectorAll('#qwerty div button');
+ const heartsLIs = doc.querySelectorAll('#scoreboard ol li');
 
  class Game {
     
@@ -18,21 +18,27 @@
     startGame() {
         this.activePhrase = this.getRandomPhrase();
         this.activePhrase.addPhraseToDisplay();
+        hideElement(overlay);
     }
 
     // Random chooses a phrase via Math.floor and Math.random from the phrase array
     getRandomPhrase() {
-       return new Phrase(this.phrases[getRandomInt(this.phrases.length)]);
+       return this.phrases[getRandomInt(this.phrases.length)];
     }
 
     // Handles every proper button click and decides wether or not that letter is part of the phrase
     handleInteraction(letterElement) {
-        const letter = letterElement.innerHTML;
+        const letter = letterElement.innerHTML.toUpperCase();
+
+        removeClass(letterElement, "key");
+        letterElement.disable = "true";
 
         if (this.activePhrase.checkLetter(letter)) {
             addClass(letterElement, "chosen");
             this.activePhrase.showMatchedLetter(letter);
-            this.checkForWin();
+            if (this.checkForWin()) {
+                this.gameOver(true);
+            }
         } else {
             addClass(letterElement, "wrong");
             this.removeLife();
@@ -60,25 +66,24 @@
 
     // Every button click this method is called to check if any of the current letters have the hide class to decide if the player won or not
     checkForWin() {
-        const phraseLIs = nodeListToArrayList(document.querySelectorAll("#phrase ul li"));
+        const phraseLIs = nodeListToArrayList(doc.querySelectorAll("#phrase ul li"));
         let won = true;
 
-        phraseLIs.forEach(li => {
+        for (const li of phraseLIs) {
             if (hasClass(li, "hide")) {
                 won = false;
+                break;
             }
-        });
-
-        if (won) {
-            this.gameOver(won);
         }
+
+        return won;
     }
 
     // Ran whenever a player ran out of lives or guessed the phrase. Resets the game.
     gameOver(won) {
 
         function handleStatus(status) {
-            document.querySelector("#overlay h2").innerHTML = `You ${status}!`;
+            doc.querySelector("#overlay h2").innerHTML = `You ${status}!`;
             setClass(overlay, status);
         }
 
@@ -91,7 +96,7 @@
         showElement(overlay);
 
     
-        const phraseUL = document.querySelector("#phrase ul");
+        const phraseUL = doc.querySelector("#phrase ul");
 
         while (phraseUL.firstChild) {
             phraseUL.removeChild(phraseUL.firstChild);

@@ -4,11 +4,11 @@
 
 // Phrases
 const phrases = [
-    "quality time",
-    "fish out of water",
-    "a piece of cake",
-    "would not harm a fly",
-    "a chip on your shoulder"
+    new Phrase("quality time"),
+    new Phrase("fish out of water"),
+    new Phrase("a piece of cake"),
+    new Phrase("would not harm a fly"),
+    new Phrase("a chip on your shoulder")
 ];
 
 // Game object pre-defined
@@ -17,12 +17,11 @@ let game;
 // Gets the button start click and then creates a new game instance to be played on
 doc.querySelector('#btn__reset').addEventListener('click', (event) => {
     event.preventDefault();
-    phrases.map(phrase => phrase.toUpperCase());
+    phrases.forEach(phrase => phrase.phrase = phrase.phrase.toUpperCase());
 
     game = new Game(0, phrases, null);
 
-    game.startGame()
-    hideElement(overlay);
+    game.startGame();
 });
 
 // Keeps me from having to make a click for every key.
