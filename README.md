@@ -16,6 +16,7 @@ Style Changes I made:
  Expectations I Exceeded:
   - Added the ability to type letters intead of clicking them
   - Personalized the page to my own liking
+  - Added a utils.js to make simple tasks more efficient
 
 
 
