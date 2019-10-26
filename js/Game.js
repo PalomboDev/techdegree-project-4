@@ -2,9 +2,9 @@
  * Project 4 - OOP Game App
  * Game.js */
 
- const overlay = doc.querySelector('#overlay');
- const qwertyKeys = doc.querySelectorAll('#qwerty div button');
- const heartsLIs = doc.querySelectorAll('#scoreboard ol li');
+ const overlay = document.querySelector('#overlay');
+ const qwertyKeys = document.querySelectorAll('#qwerty div button');
+ const heartsLIs = document.querySelectorAll('#scoreboard ol li');
 
  class Game {
     
@@ -60,7 +60,7 @@
 
     // Every button click this method is called to check if any of the current letters have the hide class to decide if the player won or not
     checkForWin() {
-        const phraseLIs = nodeListToArrayList(doc.querySelectorAll("#phrase ul li"));
+        const phraseLIs = nodeListToArrayList(document.querySelectorAll("#phrase ul li"));
         let won = true;
 
         phraseLIs.forEach(li => {
@@ -78,7 +78,7 @@
     gameOver(won) {
 
         function handleStatus(status) {
-            doc.querySelector("#overlay h2").innerHTML = `You ${status}!`;
+            document.querySelector("#overlay h2").innerHTML = `You ${status}!`;
             setClass(overlay, status);
         }
 
@@ -91,7 +91,7 @@
         showElement(overlay);
 
     
-        const phraseUL = doc.querySelector("#phrase ul");
+        const phraseUL = document.querySelector("#phrase ul");
 
         while (phraseUL.firstChild) {
             phraseUL.removeChild(phraseUL.firstChild);

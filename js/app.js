@@ -54,12 +54,3 @@ doc.addEventListener("keyup", (event) => {
         }
     }
 });
-
-/*
-    Added popout to hover over keys
-    Changed fonts
-    Changed Phrase hunter coors
-    Changed background to grey
-    Added a 15% invert filter
-    Added 1px text shadow to button text
-*/
