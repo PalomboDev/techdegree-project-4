@@ -14,7 +14,7 @@ Style Changes I made:
  - A 1px of text shadow to the button's text
  
  Expectations I Exceeded:
-  - Added the ability to type letters intead of clicking them
+  - Added the ability to type letters instead of clicking them
   - Personalized the page to my own liking
   - Added a utils.js to make simple tasks more efficient
 
